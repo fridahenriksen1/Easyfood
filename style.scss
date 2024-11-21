@@ -1,0 +1,946 @@
+@import "./sass/variables";
+@import "./sass/reset";
+@import "./sass/typography";
+
+.container {
+  // skapar luft i alla container moduler. top-left-bottom-right
+  padding: 2.5rem 1rem 2.5rem 1rem;
+  max-width: 1400px;
+  margin: auto;
+  font-family: $font-family;
+
+  //Modul 1
+  .main-header {
+    h2 {
+      color: $secondary-color;
+      font-size: 2rem;
+      font-family: $font-family;
+      text-transform: uppercase;
+
+      @media (min-width: $breakpoint-desktop) {
+        // Ändrar storlek på texten till dekstopläge
+        font-size: 2.8rem;
+      }
+    }
+  }
+
+  #search {
+    .search-container {
+      // en maxwidth för att hålla ihop innehållet i containern
+      max-width: 600px;
+      margin: auto;
+
+      h1 {
+        color: $primary-color;
+        font-family: $font-family;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+
+        @media (min-width: $breakpoint-desktop) {
+          font-size: 2.9rem;
+          white-space: nowrap;
+        }
+      }
+
+      #search-field {
+        margin: 3rem 0 1rem 0;
+        display: flex;
+        justify-content: center;
+        // Sätter en position relative för att kunna påverka barnet med position absolute
+        position: relative;
+
+        .visually-hidden {
+          // För att kunna dölja kontent
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          height: 1px;
+          overflow: hidden;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+
+        .textField {
+          // här stylear vi för sökfältet
+          font-size: 1rem;
+          min-height: 2.8rem;
+          width: 21.4rem;
+          border-radius: 0.625rem;
+          width: 100%;
+          border: 2px solid $border-color;
+          //Göra border:n mindre
+          opacity: 0.48;
+          font-family: $font-family;
+
+          //Här är färgen på vad som står i placholder
+          &::placeholder {
+            color: $border-color;
+            font-size: 1rem;
+            position: absolute;
+            margin-left: 1rem;
+            top: 0.5rem;
+            font-weight: 600;
+          }
+        }
+
+        #btn-search {
+          position: absolute;
+          //För att sätta ikonen på plats i sökrutan
+          top: 0.2rem;
+          right: 1rem;
+          bottom: 0rem;
+          border: transparent;
+          background-color: transparent;
+
+          //Här är style för förstoringsglas
+          .magnifyingGlass {
+            color: $border-color;
+            font-size: 1.9rem;
+            opacity: 0.81;
+          }
+        }
+      }
+
+      //Style för chips
+      .chip {
+        +label {
+          margin: 0.3rem;
+          //För att få en fin transition när man klickar på chipsen
+          -webkit-transition: all 500ms ease;
+          transition: all 500ms ease;
+          font-size: 18px;
+          cursor: pointer;
+          border-radius: 50px;
+          background-color: $primary-color;
+          padding: 0.5rem 2rem;
+          display: inline-block;
+          //Här är det för att det ska anpassas i olika webbläsare
+          -moz-user-select: -moz-none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          color: $white-color;
+        }
+
+        &[type="checkbox"] {
+          display: none;
+
+          &:checked {
+            +label {
+              background-color: $yellow-color;
+              color: $primary-color;
+            }
+          }
+        }
+      }
+    }
+
+    .serach-results {
+      //så att korten åker ner lite
+      margin-top: 2.5rem;
+
+      &.flex-wrap {
+        @media (min-width: $breakpoint-ipad) {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          flex-wrap: nowrap;
+        }
+
+        .card {
+          //Style för korten
+          position: relative;
+          margin-top: 0.5rem;
+          margin-bottom: 0.4rem;
+          flex: 0 0 48%;
+
+          //För att korten ska ta upp mindre plats i desktop
+          @media (min-width: $breakpoint-desktop) {
+            flex: 0 0 23%;
+          }
+
+          .card-time {
+            //Här är positionen för minutrarna i bilden
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            //För att få fram tiden framför gradienten
+            z-index: 2;
+
+            &.card-bg {
+              //Här är justeringar för minutrarna, bakgrundsfärgen osv.
+              background-color: $white-color;
+              border-radius: 13.125rem;
+              width: 5.25rem;
+              min-height: 2.4375rem;
+              color: $black-color;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+
+          img {
+            width: 100%;
+            display: block;
+            border-radius: 0.625rem;
+          }
+
+          .card-text {
+            position: absolute;
+            bottom: 1rem;
+            margin-left: 1rem;
+            //Får fram texten framför gradient
+            z-index: 1;
+
+            .card-rating {
+              top: -3rem;
+              border-radius: 13.125rem;
+              width: 5.25rem;
+              min-height: 2.4375rem;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              &.card-bg {
+                background-color: $white-color;
+
+                .star {
+                  //Färg på stjärnorna
+                  color: $yellow-color;
+                }
+              }
+            }
+
+            h3 {
+              margin-top: 0.5rem;
+              color: $white-color;
+              font-size: 1.5625rem;
+
+              @media (min-width: $breakpoint-desktop) {
+                font-size: 1rem;
+              }
+            }
+
+            p {
+              color: $white-color;
+
+              @media (min-width: $breakpoint-desktop) {
+                font-size: 0.9rem;
+              }
+            }
+          }
+
+          .gradient {
+            position: absolute;
+            //Hur kan man göra top, bottom, left och right till mindre kod?
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(#a3a3a300, #0f0f0f);
+            //Får bak gradienten bakom texten
+            z-index: auto;
+            border-radius: 0.625rem;
+          }
+        }
+      }
+    }
+  }
+
+  .m3tb {
+    &#food-plan {
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .intro-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        h2 {
+          margin-bottom: 1rem;
+        }
+
+        p {
+          text-align: center;
+          max-width: 400px;
+          line-height: 2;
+        }
+      }
+
+      #category-cloud {
+        //En max-width för att hålla ihop innehållet
+        max-width: 780px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .chips {
+          display: flex;
+          flex: 0 0 30%;
+          flex-wrap: wrap;
+          justify-content: center;
+
+          .chips-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 0.5rem;
+
+            .chip {
+              &[type="checkbox"] {
+                visibility: hidden;
+
+                &:checked {
+                  +label {
+                    background-color: $yellow-color;
+                    color: $primary-color;
+                  }
+                }
+              }
+
+              +label {
+                background-color: $primary-color;
+                color: $white-color;
+                font-size: 0.8rem;
+                font-weight: 300;
+                border-radius: 30px;
+                padding: 0.6rem 1.875rem;
+                display: inline-block;
+                margin-bottom: 0.6rem;
+                font-family: $font-family;
+                transition: all 500ms ease;
+              }
+            }
+          }
+        }
+
+        //Röd knapp
+        .btn-container {
+          .btn {
+            background-color: #bf0f37;
+            color: white;
+            font-family: $font-family;
+            padding: 0.7rem 1.75rem 0.7rem 1.75rem;
+            border-radius: 0.6rem;
+            text-decoration: none;
+            font-size: 1rem;
+            border: none;
+            margin-top: 2rem;
+
+            @media (min-width: $breakpoint-desktop) {
+              flex: 0 0 20%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  //Modul 3
+  #grocery {
+    margin: 0 auto;
+    margin: auto;
+    //padding: 3rem 1rem 3rem 1rem;
+    font-family: $font-family;
+    max-width: 1200px;
+
+    @media (min-width: $breakpoint-ipad) {
+      max-width: 400px;
+    }
+
+    @media (min-width: $breakpoint-desktop) {
+      max-width: 600px;
+    }
+
+    .intro-text {
+      text-align: center;
+
+      @media (min-width: $breakpoint-desktop) {
+        max-width: 400px;
+        margin: auto;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        color: $primary-color;
+      }
+
+      p {
+        margin-top: 2rem;
+        line-height: 2;
+        color: $black-color;
+      }
+    }
+
+    .grocery-list {
+      margin-top: 2rem;
+      border-bottom: 2px solid $border-color;
+
+      .grocery-item {
+        //
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 2px solid $border-color;
+        padding: 0.5rem 0;
+
+        //Style för texten jämte boxarna och så det är centrerade vertikalt i mitten
+        .check-container {
+          padding-left: 1rem;
+          display: flex;
+          align-items: center;
+
+          //Style för checkboxen, så den blir röd när man checkar i
+          input {
+            margin-right: 0.5rem;
+            accent-color: $secondary-color;
+            zoom: 1.8;
+            cursor: pointer;
+          }
+        }
+
+        //Style för sopptunorna
+        .btn {
+          background-color: transparent;
+          border: none;
+          margin-right: 0.5rem;
+
+          .trash {
+            font-size: 2rem;
+            color: $border-color;
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+
+    //Boxen för de två knapparna
+    .m1b {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2.7rem;
+
+      //Style för knappen "Lägg till ingredienser"
+      .textField {
+        flex: 0 0 59%;
+        border-radius: 0.625rem;
+        border: 1px solid $border-color;
+        font-family: $font-family;
+        font-size: 1rem;
+        margin-right: 1.3rem;
+
+        @media (min-width: $breakpoint-ipad) {
+          margin-right: 2.6rem;
+          flex: 0 0 60%;
+        }
+
+        //Flyttar "Lägg till ingredienser" till kanten
+        @media (min-width: $breakpoint-desktop) {
+          margin-right: 1.2rem;
+          flex: 0 0 77%;
+        }
+
+        &::placeholder {
+          font-size: 1rem;
+          padding-left: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  #popular {
+    margin: auto;
+    font-family: $font-family;
+
+    h2 {
+      color: $primary-color;
+      font-size: 1.75rem;
+      font-family: $font-family;
+      margin-bottom: 2.5rem;
+    }
+
+    .popular-container {
+      &.flex-wrap {
+        @media (min-width: $breakpoint-ipad) {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+
+        @media (min-width: $breakpoint-desktop) {
+          flex-wrap: nowrap;
+        }
+
+        .card {
+          position: relative;
+          margin-top: 0.5rem;
+          margin-bottom: 0.4rem;
+          flex: 0 0 48%;
+
+          @media (min-width: $breakpoint-desktop) {
+            flex: 0 0 23%;
+          }
+
+          .card-time {
+            //Här är positionen för minutrarna i bilden
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            //För att få fram tiden framför gradienten
+            z-index: 2;
+
+            &.card-bg {
+              //Här är justeringar för minutrarna, bakgrundsfärgen osv.
+              background-color: $white-color;
+              border-radius: 13.125rem;
+              width: 5.25rem;
+              min-height: 2.4375rem;
+              color: $black-color;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              p {
+                color: $primary-color;
+
+                @media (min-width: $breakpoint-desktop) {
+                  font-size: 0.9rem;
+                }
+              }
+            }
+          }
+
+          img {
+            width: 100%;
+            display: block;
+            border-radius: 0.625rem;
+          }
+
+          .card-text {
+            position: absolute;
+            bottom: 2rem;
+            margin-left: 1rem;
+            //Får fram texten framför gradient
+            z-index: 1;
+
+            .card-rating {
+              top: -3rem;
+              //left: 1rem;
+              border-radius: 13rem;
+              width: 5.25rem;
+              min-height: 2.4rem;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              &.card-bg {
+                background-color: $white-color;
+
+                .star {
+                  //Färg på stjärnorna
+                  color: $yellow-color;
+                }
+              }
+            }
+
+            h3 {
+              margin-top: 0.5rem;
+              color: $white-color;
+              font-size: 1.5625rem;
+
+              @media (min-width: $breakpoint-desktop) {
+                font-size: 1rem;
+              }
+            }
+
+            p {
+              color: $white-color;
+
+              @media (min-width: $breakpoint-desktop) {
+                font-size: 0.9rem;
+              }
+            }
+          }
+
+          .gradient {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(#a3a3a300, #0f0f0f);
+            //Får bak gradienten bakom texten
+            z-index: auto;
+            border-radius: 0.625rem;
+          }
+        }
+      }
+    }
+  }
+
+  #info-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1200px;
+    // margin gör så jag trycker ihop innehållet lite lite
+    margin: 1rem;
+    max-width: 1366px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      color: $primary-color;
+      font-family: $font-family;
+      font-weight: 600;
+      font-size: 1.75rem;
+    }
+
+    .info-article {
+      margin-top: 2rem;
+
+      @media (min-width: 768px) {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-bottom: 2rem;
+
+        &:nth-child(2) {
+          flex-direction: row;
+        }
+      }
+
+      .info-img {
+        width: 343px;
+        height: 262px;
+
+        @media (min-width: 768px) {
+          width: 420px;
+          height: 320px;
+        }
+
+        @media (min-width: 1040px) {
+          width: 550px;
+          height: 420px;
+        }
+
+        img {
+          height: 100%;
+          display: block;
+        }
+      }
+
+      .info-text {
+        margin: 20px;
+
+        h3 {
+          color: $primary-color;
+          font-family: $font-family;
+          font-weight: 500;
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          margin-top: 1rem;
+        }
+
+        p {
+          font-family: $font-family;
+          font-weight: 400;
+          font-size: 1rem;
+          color: $black-color;
+          line-height: 2.2rem;
+          margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+          margin-top: 0;
+          padding: 0 1rem 0 1rem;
+        }
+
+        @media (min-width: 1040px) {
+          padding: 0 3rem 0 3rem;
+        }
+      }
+    }
+  }
+}
+
+.container-fluid {
+  background-color: $primary-color;
+  font-family: $font-family;
+  width: 100vw;
+  margin: auto;
+  max-width: 1400px;
+
+  &#main-footer {
+    border-top: solid $secondary-color 5px;
+
+    .footer-inside {
+
+      max-width: 350px;
+      margin: auto;
+
+      @media (min-width: $breakpoint-ipad) {
+        max-width: 400px;
+      }
+
+      #newsletter {
+        display: flex;
+
+        .visually-hidden {
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          height: 1px;
+          overflow: hidden;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+
+        .textField {
+
+          flex: 0 0 65%;
+          height: 2.8rem;
+          margin-right: 1rem;
+          border-radius: 0.625rem;
+          font-family: $font-family;
+          font-weight: 500;
+          font-size: 1rem;
+          border: none;
+
+          @media (min-width: 768px) {
+            margin-right: 2rem;
+          }
+
+          &::placeholder {
+            color: $border-color;
+            padding-left: 0.5rem;
+          }
+        }
+      }
+
+      .footer-text {
+        padding-bottom: 1.5rem;
+        text-align: center;
+        font-size: 0.7rem;
+        margin-top: 1.2rem;
+      }
+
+      p {
+        font-family: $font-family;
+        font-weight: 400;
+        font-size: 1rem;
+        color: $white-color;
+        line-height: 2.2rem;
+        padding-top: 0rem;
+        font-style: normal;
+      }
+
+      h3 {
+        color: $white-color;
+        font-family: $font-family;
+        font-weight: 500;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        text-transform: uppercase;
+        text-align: center;
+      }
+    }
+  }
+
+  .info-article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 2rem 0;
+
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+
+    .info-img {
+
+      width: 342px;
+      height: 342px;
+      margin: auto;
+
+      @media (min-width: 768px) {
+        width: 420px;
+        height: 420px;
+      }
+
+      @media (min-width: 1080px) {
+
+        width: 650px;
+        height: 650px;
+
+        padding: 5rem 3rem 5rem 3rem;
+      }
+
+      img {
+        height: 100%;
+        display: block;
+
+        @media (min-width: 768px) {}
+      }
+    }
+
+    .info-text {
+      padding: 16px;
+      flex: 0 0 50%;
+
+      p {
+        font-family: $font-family;
+        font-weight: 400;
+        font-size: 1rem;
+        color: $white-color;
+        line-height: 2.2rem;
+        margin-bottom: 1.5rem;
+        padding-top: 0rem;
+        font-style: normal;
+      }
+
+      @media (min-width: 768px) {
+
+        width: 545px;
+      }
+
+      .m1b {
+        color: $white-color;
+      }
+    }
+  }
+
+  // Vi försökte med denna uppsättning eftersom vi ville använda flex istället för bestämda pixlar men när vi gör det kopplar det inte, varför?
+
+  // #info-higlight {
+  //   background-color: $primaryColor;
+
+  //   .info-article {
+  //     display: flex;
+  //     flex-direction: column;
+  //     justify-content: center;
+  //     align-items: center;
+
+  //     @media(min-width: 768px) {
+  //       flex-direction: row;
+  //       margin: 2rem;
+  //     }
+  //   }
+
+  //   .info-img {
+  //     padding: 2rem;
+
+  //     img {
+  //       width: 100%;
+  //       display: block;
+  //     }
+
+  //     @media(min-width: 1000px) {
+  //       flex: 0 0 50%;
+  //     }
+  //   }
+
+  //   .info-text {
+  //     padding: 2rem;
+
+  //     @media(min-width: 1000px) {
+  //       padding-left: 6rem;
+  //       flex: 0 0 48%;
+  //       padding: 3rem;
+  //     }
+  //   }
+
+  //   .m1b {
+  //     color: $textxolor;
+  //   }
+
+  //   p {
+  //     color: $textxolor;
+  //   }
+
+  // }
+
+  &.m3b {
+
+    p {
+      color: $white-color;
+      font-size: 2rem;
+      font-weight: 500;
+      font-style: italic;
+      padding: 4rem 1rem 1rem 1rem;
+    }
+
+    figure {
+      @media (min-width: $breakpoint-ipad) {
+        max-width: 500px;
+        margin: auto;
+      }
+
+      @media (min-width: $breakpoint-ipad) {
+        max-width: 650px;
+      }
+
+      blockquote {
+        margin: 0;
+
+        p {
+
+          //quotes-tecken:a, before är före texten och after är efter texten
+          quotes: "“" "”";
+
+          &::before {
+            content: open-quote;
+          }
+
+          &::after {
+            content: close-quote;
+          }
+        }
+      }
+
+      //Gordon Ramsay texten
+      figcaption {
+        color: $white-color;
+        font-size: 1.5rem;
+        text-align: right;
+        font-weight: 400;
+        padding: 0 1rem 4rem 0;
+
+        @media (min-width: $breakpoint-desktop) {
+          padding-right: 3rem;
+        }
+      }
+    }
+  }
+}

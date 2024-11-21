@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Easyfoods</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+    rel="stylesheet" />
+  <!-- Här laddar jag in google icons och symbols  -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Icons&family=Material+Icons+Round&family=Material+Symbols+Outlined"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container m3b">
+    <header class="main-header">
+      <h2>Easyfoods</h2>
+    </header>
+    <main id="search">
+      <div class="search-container">
+        <h1>Sök efter populära recept</h1>
+        <form id="search-field" role="search" action="/" method="get">
+          <label for="header-search">
+            <span class="visually-hidden">Search</span>
+          </label>
+          <input class="textField" type="text" id="header-search" placeholder="Sök recept" />
+          <button id="btn-search" type="submit">
+            <span class="material-icons magnifyingGlass">search</span>
+          </button>
+        </form>
+        <form action="/">
+          <input class="chip" type="checkbox" id="categoryOne" />
+          <label for="categoryOne">Lunch</label>
+          <input class="chip" type="checkbox" id="categoryTwo" />
+          <label for="categoryTwo">Efterätt</label>
+          <input class="chip" type="checkbox" id="categoryThree" />
+          <label for="categoryThree">Asiatiskt</label>
+          <input class="chip" type="checkbox" id="categoryFour" />
+          <label for="categoryFour">Mexikanskt</label>
+        </form>
+      </div>
+      <section class="serach-results flex-wrap">
+        <article class="card">
+          <div class="card-time card-bg">
+            <p>30 min</p>
+          </div>
+          <img src="img/pastanew.png" alt="En tallrik med pasta carbonara toppad med persilja" />
+          <header class="card-text">
+            <div class="card-rating card-bg">
+              <span class="material-icons-round star">star</span>
+              <span>4.5</span>
+            </div>
+            <h3>Pasta carbonara</h3>
+            <p>Löksås ipsum hav brunsås</p>
+          </header>
+          <div class="gradient"></div>
+        </article>
+        <article class="card">
+          <div class="card-time card-bg">
+            <p>60 min</p>
+          </div>
+          <img src="img/cakenew.png" alt="Flera små jordgubbstårtor med florsocker på" />
+          <header class="card-text">
+            <div class="card-rating card-bg">
+              <span class="material-icons-round star">star</span>
+              <span>4.8</span>
+            </div>
+            <h3>Jordgubbstårta</h3>
+            <p>Löksås ipsum hav brunsås</p>
+          </header>
+          <div class="gradient"></div>
+        </article>
+        <article class="card">
+          <div class="card-time card-bg">
+            <p>120 min</p>
+          </div>
+          <img src="img/sushinew.png" alt="En tallrik med diverse olika sushibitar på" />
+          <header class="card-text">
+            <div class="card-rating card-bg">
+              <span class="material-icons-round star">star</span>
+              <span>4.0</span>
+            </div>
+            <h3>Sushi</h3>
+            <p>Löksås ipsum hav brunsås</p>
+          </header>
+          <div class="gradient"></div>
+        </article>
+        <article class="card">
+          <div class="card-time card-bg">
+            <p>20 min</p>
+          </div>
+          <img src="img/burgernew.png" alt="En cheeseburgare med karamelliserad lök och bacon" />
+          <header class="card-text">
+            <div class="card-rating card-bg">
+              <span class="material-icons-round star">star</span>
+              <span>5.0</span>
+            </div>
+            <h3>Hamburgare</h3>
+            <p>Löksås ipsum hav brunsås</p>
+          </header>
+          <div class="gradient"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <!--Här börjar modul 2-->
+  <section class="container-fluid m3b" id="quote">
+    <figure>
+      <blockquote>
+        <p>
+          For what we are about to eat, may the Lord make us truly not vomit.
+        </p>
+      </blockquote>
+      <figcaption>— Gordon Ramsay</figcaption>
+    </figure>
+  </section>
+  <!--Här börjar modul 3-->
+  <div class="container">
+    <section id="grocery">
+      <div class="intro-text m3b">
+        <h2>Inköpslista</h2>
+        <p>
+          Löksås ipsum hav brunsås kan på del, som om vad sjö rännil kom sitt,
+          som tiden så fram tid. Dimmhöljd ordningens rot sista år miljoner.
+        </p>
+      </div>
+      <!-- Här finns ingen form tagg, detta äre ett undtag då man kan använda inputs utan <form></form>, eftetsom innehållet kommer styras med hjälp av javascript(om man skulle bygga så den fungerar) och inte skickas någonstans-->
+      <ul class="grocery-list">
+        <li class="grocery-item">
+          <label class="check-container" for="1">
+            <input type="checkbox" id="1" />
+            Mjölk
+            <span class="checkmark"></span>
+          </label>
+          <button class="btn btn-delete">
+            <span class="material-symbols-outlined trash">delete</span>
+          </button>
+        </li>
+        <li class="grocery-item">
+          <label class="check-container" for="2">
+            <input type="checkbox" id="2" />Spetskål
+            <span class="checkmark"></span>
+          </label>
+          <button class="btn btn-delete">
+            <span class="material-symbols-outlined trash">delete</span>
+          </button>
+        </li>
+        <li class="grocery-item">
+          <label class="check-container" for="3">
+            <input type="checkbox" id="3" />
+            Pizzabotten
+            <span class="checkmark"></span>
+          </label>
+          <button class="btn btn-delete">
+            <span class="material-symbols-outlined trash">delete</span>
+          </button>
+        </li>
+      </ul>
+      <form class="m1b" id="search-grocerys" role="search" action="/" method="get">
+        <label for="grocerys-search">
+          <span class="visually-hidden">Search</span>
+        </label>
+        <input class="textField" type="text" id="grocerys-search" placeholder="Lägg till ingredienser" />
+        <button class="btn" type="submit">Lägg till</button>
+      </form>
+    </section>
+  </div>
+  <!--Modul 4-->
+  <div class="container">
+    <section id="popular">
+      <h2>Populära Recept</h2>
+      <div class="popular-container flex-wrap">
+        <article class="card">
+          <div class="card-time card-bg">
+            <p>30 min</p>
+          </div>
+          <img src="img/pastanew.png" alt="En tallrik med pasta carbonara toppad med persilja" />
+          <header class="card-text">
+            <div class="card-rating card-bg">
+              <span class="material-icons-round star">star</span>
+              <span>4.5</span>
+            </div>
+            <h3>Pasta carbonara</h3>
+            <p>Löksås ipsum hav brunsås</p>
+          </header>
+          <div class="gradient"></div>
+        </article>
+        <article class="card">
+          <div class="card-time card-bg">
+            <p>20 min</p>
+          </div>
+          <img src="img/cakenew.png" alt="En cheeseburgare med karamelliserad lök och bacon" />
+          <header class="card-text">
+            <div class="card-rating card-bg">
+              <span class="material-icons-round star">star</span>
+              <span>5.0</span>
+            </div>
+            <h3>Hamburgare</h3>
+            <p>Löksås ipsum hav brunsås</p>
+          </header>
+          <div class="gradient"></div>
+        </article>
+        <article class="card">
+          <div class="card-time card-bg">
+            <p>120 min</p>
+          </div>
+          <img src="img/sushinew.png" alt="En tallrik med diverse olika sushibitar på" />
+          <header class="card-text">
+            <div class="card-rating card-bg">
+              <span class="material-icons-round star">star</span>
+              <span>4.0</span>
+            </div>
+            <h3>Sushi</h3>
+            <p>Löksås ipsum hav brunsås</p>
+          </header>
+          <div class="gradient"></div>
+        </article>
+        <article class="card">
+          <div class="card-time card-bg">
+            <p>60 min</p>
+          </div>
+          <img src="img/burgernew.png" alt="Flera små jordgubbstårtor med florsocker på" />
+          <header class="card-text">
+            <div class="card-rating card-bg">
+              <span class="material-icons-round star">star</span>
+              <span>4.8</span>
+            </div>
+            <h3>Jordgubbstårta</h3>
+            <p>Löksås ipsum hav brunsås</p>
+          </header>
+          <div class="gradient"></div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!--Modul 5-->
+  <div class="container">
+    <section id="info-cards" class="m3tb">
+      <h2>Italiensk Afton</h2>
+      <article class="info-article flexbox">
+        <div class="info-img">
+          <img src="img/make_pasta.jpg" alt="En man som tillverkar tagliatelle i en pastamaskin" />
+        </div>
+        <div class="info-text">
+          <h3>Pasta i alla sorter</h3>
+          <p>
+            Löksås ipsum hav brunsås kan på del, som om vad sjö rännil kom
+            sitt, som tiden så fram tid. Dimmhöljd ordningens rot sista år
+            miljoner tre genom om det olika faktor, genom sin dimma sax
+            brunsås upprätthållande dock räv bra tidigare samma, redan nya kom
+            träutensilierna som hela nu regn tiden kan.
+          </p>
+          <a class="btn" href="#">Till alla pasta recept</a>
+        </div>
+      </article>
+      <article class="info-article flexbox">
+        <div class="info-img">
+          <img src="img/parmensan.jpg" alt="Ett stileben med rivjärn,parmensan,vitlök,pinjenötter och basilika" />
+        </div>
+        <div class="info-text">
+          <h3>Parmesan</h3>
+          <p>
+            Löksås ipsum hav brunsås kan på del, som om vad sjö rännil kom
+            sitt, som tiden så fram tid. Dimmhöljd ordningens rot sista år
+            miljoner tre genom om det olika faktor, genom sin dimma sax
+            brunsås upprätthållande dock räv bra tidigare samma, redan nya kom
+            träutensilierna som hela nu regn tiden kan.
+          </p>
+          <a class="btn" href="#">Till alla ost recept</a>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <!--Modul 6-->
+  <section class="container-fluid" id="info-higlight">
+    <article class="info-article flexbox">
+      <div class="info-img">
+        <img src="img/stekpannan@2x.jpg" alt="En man med skägg som steker mat i en stekpanna" />
+      </div>
+      <div class="info-text">
+        <h3 class="m1b">Använd rätt stekpannor</h3>
+        <p>
+          Löksås ipsum hav brunsås kan på del, som om vad sjö rännil kom sitt,
+          som tiden så fram tid. Dimmhöljd ordningens rot sista år miljoner
+          tre genom om det olika faktor, genom sin dimma sax brunsås
+          upprätthållande dock räv bra tidigare samma, redan nya kom
+          träutensilierna som hela nu regn tiden kan.
+        </p>
+        <a class="btn" href="#">Se våran guide till stekpannor</a>
+      </div>
+    </article>
+  </section>
+
+  <!--Modul 7-->
+  <div class="container">
+    <section class="m3tb" id="food-plan">
+      <div class="intro-text">
+        <h2>Matsedel</h2>
+        <p>Välj vilka kategorier du gillar och klicka på skapa en matsedel</p>
+      </div>
+      <form action="/" id="category-cloud">
+        <section class="chips m3tb">
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="bröd" />
+            <label for="bröd">Bröd</label>
+          </div>
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="asiatiskt" />
+            <label for="asiatiskt">Asiatiskt</label>
+          </div>
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="amerikanst" />
+            <label for="amerikanst">Amerikanst</label>
+          </div>
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="veganskt" />
+            <label for="veganskt">Veganskt</label>
+          </div>
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="vegetariskt" />
+            <label for="vegetariskt">Vegetariskt</label>
+          </div>
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="kyckling" />
+            <label for="kyckling">Kyckling</label>
+          </div>
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="skaldjur" />
+            <label for="skaldjur">Skaldjur</label>
+          </div>
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="mexikanskt" />
+            <label for="mexikanskt">Mexikanskt</label>
+          </div>
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="glutenfritt" />
+            <label for="glutenfritt">Glutenfritt</label>
+          </div>
+          <div class="chips-container">
+            <input class="chip" type="checkbox" id="laktos" />
+            <label for="laktos">Laktos</label>
+          </div>
+        </section>
+        <div class="btn-container">
+          <input type="submit" class="btn" value="Skapa matsedel" />
+        </div>
+      </form>
+    </section>
+  </div>
+  <!--Modul 8-->
+  <footer class="container-fluid" id="main-footer">
+    <section class="footer-inside">
+      <h3>Easyfoods</h3>
+      <p>Bli uppdaterad på det senaste</p>
+      <form action="/" id="newsletter">
+        <label for="email">
+          <span class="visually-hidden">Email</span>
+        </label>
+        <input class="textField" type="text" name="email" id="email" placeholder="Email" />
+        <input class="btn" type="submit" value="Skicka" />
+      </form>
+      <p class="footer-text">©Copyright 2022 EasyFoods</p>
+    </section>
+  </footer>
+</body>
+
+</html>
